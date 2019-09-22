@@ -30,7 +30,7 @@
         ></AuthInput>
     </div>
 
-   <AuthButton text="登录" @click="hanleSubmit"/>
+   <AuthButton text="登录" @click="handleSubmit"/>
   </div>
 </template>
 
@@ -38,7 +38,7 @@
 
 // 导入组件
 import AuthInput from "@/components/AuthInput";
-import AuthButton from "@/component/AuthButton";
+import AuthButton from "@/components/AuthButton";
 
 export default {
     data(){

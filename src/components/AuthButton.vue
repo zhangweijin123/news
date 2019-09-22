@@ -8,10 +8,10 @@
 
 <script>
 export default {
-    props:[ "text" ],
+    props:["text"],
     methods:{
         handleClick(event){
-            this.$emit("click",evnet)
+            this.$emit("click",event)
         }
     }
 }
@@ -20,7 +20,7 @@ export default {
 <style scoped lang="less">
     .button{
         width: 100%;
-        height: 40 / 360 *100vw;
+        height: 48 / 360 *100vw;
         display: flex;
         justify-content: center;
         align-items: center;
