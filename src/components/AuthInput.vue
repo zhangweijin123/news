@@ -4,7 +4,7 @@
    class="input"
    :class="{
        success: status === 'success',
-       error: sstatus === 'error'
+       error: status === 'error'
    }"
    :placeholder="placeholder"
    :value="value"

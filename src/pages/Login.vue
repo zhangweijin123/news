@@ -12,15 +12,13 @@
 
     <!-- 用户名密码输入框 -->
     <div class="inputs">
-    <!-- 输入框组件 -->
+      <!-- 输入框组件 -->
       <AuthInput
-      placeholder="手机号码"
-
-      :value ='form.username'
-      @input="handleUsername"
-
-      :rule="/^1[0-9]{4,10}$/"
-      err_message="手机号码格式不正确"
+        placeholder="手机号码"
+        :value="form.username"
+        @input="handleUsername"
+        :rule="/^1[0-9]{4,10}$/"
+        err_message="手机号码格式不正确"
       ></AuthInput>
     </div>
 
@@ -31,7 +29,7 @@
 <script>
 
 // 导入输入框组件
-import AuthInput from "@components/AuthInput";
+import AuthInput from "@/components/AuthInput";
 
 export default {
     data(){
@@ -55,34 +53,34 @@ export default {
         this.form.username = value;
       },
       //表单提交
-      handleSubmit({
-
-      })
+      handleSubmit(){
+        console.log(this.form)
+      }
     }
 }
 </script>
 
 <style scoped lang="less">
-  //scoped作用域的样式
-  //lang声明样式的类型
-  .container{
-    padding: 20px;
-  }
+//scoped作用域的样式
+//lang声明样式的类型
+.container {
+  padding: 20px;
+}
 
-  .close{
-    span{
-      font-size: 27 / 360 *100vw;
-    }
+.close {
+  span {
+    font-size: 27 / 360 * 100vw;
   }
+}
 
-  .logo{
-    display: flex;
-    justify-content: center;
+.logo {
+  display: flex;
+  justify-content: center;
 
-    span{
-      display: block;
-      font-size: 126 / 360 *100vw;
-      color: #d81e06;
-    }
+  span {
+    display: block;
+    font-size: 126 / 360 * 100vw;
+    color: #d81e06;
   }
+}
 </style>
