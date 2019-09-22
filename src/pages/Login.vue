@@ -11,22 +11,47 @@
     </div>
 
     <!-- 用户名密码输入框 -->
-    <div>  
-      <input type="text">
-    </div>
-    <div>
-      <input type="text">
-    </div>
-    <button>登录</button>
+    <!-- 输入框组件 -->
+      <AuthInput
+      placeholder="手机号码"
+
+      :value = "form.username"
+      @input="handleUsername"
+      ></AuthInput>
+    <button @click="handleSubmit">登录按钮</button>
   </div>
 </template>
 
 <script>
+
+// 导入输入框组件
+import AuthInput from "@components/AuthInput";
+
 export default {
     data(){
       return{
-        list:[]
+          // 发送给后台的数据
+          form:{
+            username:"",
+            password:""
+          }
       }
+    },
+
+    //注册组件
+    components:{
+      AuthInput
+    },
+
+    methods:{
+      //传递给输入框的组件用于获取用户名
+      handleUsername(value){
+        this.form.username = value;
+      },
+      //表单提交
+      handleSubmit({
+
+      })
     }
 }
 </script>
