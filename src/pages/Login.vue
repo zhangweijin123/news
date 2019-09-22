@@ -20,16 +20,25 @@
         :rule="/^1[0-9]{4,10}$/"
         err_message="手机号码格式不正确"
       ></AuthInput>
+
+      <AuthInput
+        placeholder="密码"
+        v-model="form.password"
+
+        :rule="/^[0-9a-zA-Z]{3,12}$/"
+        err_message="密码格式不正确"
+        ></AuthInput>
     </div>
 
-    <button @click="handleSubmit">登录按钮</button>
+   <AuthButton text="登录" @click="hanleSubmit"/>
   </div>
 </template>
 
 <script>
 
-// 导入输入框组件
+// 导入组件
 import AuthInput from "@/components/AuthInput";
+import AuthButton from "@/component/AuthButton";
 
 export default {
     data(){
@@ -44,7 +53,8 @@ export default {
 
     //注册组件
     components:{
-      AuthInput
+      AuthInput,
+      AuthButton
     },
 
     methods:{
@@ -81,6 +91,12 @@ export default {
     display: block;
     font-size: 126 / 360 * 100vw;
     color: #d81e06;
+  }
+}
+
+.inputs{
+  input{
+    margin-bottom: 20px;
   }
 }
 </style>
