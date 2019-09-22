@@ -1,5 +1,24 @@
 <template>
-  <div></div>
+  <div class="container">
+    <!-- 关闭按钮 -->
+    <div class="close">
+      <span class="iconfont iconicon-test"></span>
+    </div>
+
+    <!-- logo -->
+    <div class="logo">
+      <span class="iconfont iconnew"></span>
+    </div>
+
+    <!-- 用户名密码输入框 -->
+    <div>  
+      <input type="text">
+    </div>
+    <div>
+      <input type="text">
+    </div>
+    <button>登录</button>
+  </div>
 </template>
 
 <script>
@@ -12,6 +31,27 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="less">
+  //scoped作用域的样式
+  //lang声明样式的类型
+  .container{
+    padding: 20px;
+  }
 
+  .close{
+    span{
+      font-size: 27 / 360 *100vw;
+    }
+  }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+
+    span{
+      display: block;
+      font-size: 126 / 360 *100vw;
+      color: #d81e06;
+    }
+  }
 </style>
