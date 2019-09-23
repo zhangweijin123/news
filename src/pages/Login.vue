@@ -17,6 +17,7 @@
         placeholder="手机号码"
         :value="form.username"
         @input="handleUsername"
+
         :rule="/^1[0-9]{4,10}$/"
         err_message="手机号码格式不正确"
       ></AuthInput>
@@ -55,7 +56,7 @@ export default {
           form:{
             username:"",
             password:""
-          }
+          },
       }
     },
 
@@ -82,11 +83,11 @@ export default {
         }).then(res=>{
           const {message} = res.data;
 
-          if(message === "登陆成功"){
+          if(message === "登录成功"){
             //跳转到首页
             this.$router.push("/")
           }
-        })
+        });
       }
     }
 }

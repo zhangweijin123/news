@@ -21,23 +21,29 @@
         err_message="手机号码格式不正确"
       ></AuthInput>
 
+      <!-- 昵称 -->
+      <AuthInput
+        placeholder="昵称"
+        v-model="form.nickname"
+        :rule="/^[0-9a-zA-Z\u4e00-\u9fa5]{2,6}$/"
+        err_message="昵称格式不正确"
+      ></AuthInput>
+
       <AuthInput
         placeholder="密码"
         type="password"
         v-model="form.password"
-
         :rule="/^[0-9a-zA-Z]{3,12}$/"
         err_message="密码格式不正确"
-        ></AuthInput>
+      ></AuthInput>
     </div>
 
     <p class="tips">
-      没有账号？
-      <router-link to="/register">去注册</router-link>
+      有账号？
+      <router-link to="/register">去登录</router-link>
     </p>
 
-
-   <AuthButton text="登录" @click="handleSubmit"/>
+    <AuthButton text="注册" @click="handleSubmit" />
   </div>
 </template>
 
@@ -49,47 +55,48 @@ import AuthInput from "@/components/AuthInput";
 import AuthButton from "@/components/AuthButton";
 
 export default {
-    data(){
-      return{
-          // 发送给后台的数据
-          form:{
-            username:"",
-            password:""
-          }
+  data() {
+    return {
+      // 发送给后台的数据
+      form: {
+        username: "",
+        password: "",
+        nickname: ""
       }
+    };
+  },
+
+  //注册组件
+  components: {
+    AuthInput,
+    AuthButton
+  },
+
+  methods: {
+    //传递给输入框的组件用于获取用户名
+    handleUsername(value) {
+      this.form.username = value;
     },
+    //表单提交
+    handleSubmit() {
+      // console.log(this.form)
 
-    //注册组件
-    components:{
-      AuthInput,
-      AuthButton
-    },
+      this.$axios({
+        url: "/register",
+        method: "POST", //method相当于type
+        data: this.form
+        //.then的回调函数相当于success
+      }).then(res => {
+        const { message } = res.data;
 
-    methods:{
-      //传递给输入框的组件用于获取用户名
-      handleUsername(value){
-        this.form.username = value;
-      },
-      //表单提交
-      handleSubmit(){
-        // console.log(this.form)
-
-        this.$axios({
-          url:"/login",
-          method:"POST",  //method相当于type
-          data:this.form
-          //.then的回调函数相当于success
-        }).then(res=>{
-          const {message} = res.data;
-
-          if(message === "登陆成功"){
-            //跳转到首页
-            this.$router.push("/")
-          }
-        })
-      }
+        if (message === "注册成功") {
+          //跳转到首页
+          this.$router.push("/login");
+        }
+      });
     }
-}
+  }
+};
 </script>
 
 <style scoped lang="less">
@@ -116,17 +123,17 @@ export default {
   }
 }
 
-.inputs{
-  input{
+.inputs {
+  input {
     margin-bottom: 20px;
   }
 }
 
-.tips{
+.tips {
   text-align: right;
   margin-bottom: 20px;
 
-  a{
+  a {
     color: #3385ff;
   }
 }
