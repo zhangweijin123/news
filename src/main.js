@@ -11,6 +11,7 @@ import axios from "axios";
 // 导入组件
 import App from "@/App";
 import Login from "@/pages/Login"
+import Register from "@/pages/Register";
 
 // 在.vue文件中要使用router-link或者router-view.需要注册下插件
 Vue.use(VueRouter);
@@ -18,9 +19,11 @@ Vue.use(Vant);
 
 //把axios挂载到原型
 Vue.prototype.$axios = axios;  //this.$axios
+//基准路径 以后每次请求都会自动在前面加上该路径
 // 路由：2.创建路由配置
 const routes = [
-    { path: "/login", component: Login}
+    { path: "/login", component: Login},
+    { path: "/register", component: Register},
 ]
 
 // 路由：3.创建对象
