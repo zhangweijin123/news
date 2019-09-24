@@ -3,7 +3,7 @@
     <div class="personal">
       <!-- <img src="../../static/头像.jpg" alt /> -->
       <!-- $axios.defaults.baseURL读取axios的服务器路径 -->
-      <img :src="$axios.defaults.baseURL + personal.head_img" alt="">
+      <img :src="$axios.defaults.baseURL + personal.head_img" alt />
       <div class="personal-center">
         <div class="name">
           <span class="iconfont iconxingbienan"></span>
@@ -16,41 +16,46 @@
     </div>
 
     <!-- 调用条形组件 -->
-    <CellBar />
+    <CellBar label="我的关注" text="关注的用户" />
+
+    <CellBar label="我的跟帖" text="跟帖/回复" />
+
+    <CellBar label="我的收藏" text="文章/视频" />
+
+    <CellBar label="设置" />
   </div>
 </template>
 
 <script>
-
 //导入条形组件
-import CellBar from "@/components/CellBar"
+import CellBar from "@/components/CellBar";
 export default {
-    data(){
-        return{
-            //个人信息
-            personal:{}
-        }
-    },
-    components:{
-        CellBar
-    },
+  data() {
+    return {
+      //个人信息
+      personal: {}
+    };
+  },
+  components: {
+    CellBar
+  },
 
-    mounted(){
-        //请求个人资料接口
-        this.$axios({
-            url:"/user/" + localStorage.getItem("user_id"),
-            //添加头信息
-            headers:{
-                Authorization:localStorage.getItem("token")
-            }
-        }).then(res=>{
-            // console.log(res)
-            const {data} = res.data;
+  mounted() {
+    //请求个人资料接口
+    this.$axios({
+      url: "/user/" + localStorage.getItem("user_id"),
+      //添加头信息
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    }).then(res => {
+      // console.log(res)
+      const { data } = res.data;
 
-            //保存到data
-            this.personal = data;
-        })
-    }
+      //保存到data
+      this.personal = data;
+    });
+  }
 };
 </script>
 
