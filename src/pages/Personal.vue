@@ -52,15 +52,17 @@ export default {
       // console.log(res)
       const { data } = res.data;
 
-      //保存到data
-      this.personal = data;
-    
-      //如果用户有头像
-      if(data.head_img){
-          this.personal.head_img = this.$axios.defaults.baseURL +data.head_img;
-          console.log(this.data)
-      }else{
-          this.personal.head_img = "./static/头像.jpg"
+      if (data) {
+        //保存到data
+        this.personal = data;
+
+        //如果用户有头像
+        if (data.head_img) {
+          this.personal.head_img = this.$axios.defaults.baseURL + data.head_img;
+          console.log(this.data);
+        } else {
+          this.personal.head_img = "./static/头像.jpg";
+        }
       }
     });
   }
