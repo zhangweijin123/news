@@ -1,5 +1,5 @@
 <template>
-  <div class="cell-wrap">
+  <div class="cell-wrap" @click="$emit('click', $event)">
       <div class="cell">
           <span>{{label}}</span>
           <i>{{text}}</i>
