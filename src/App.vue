@@ -32,6 +32,6 @@ ul,li,ol{
     list-style: none;
 }
 i,em{
-    font-style: none;
+    font-style: normal;
 }
 </style>
