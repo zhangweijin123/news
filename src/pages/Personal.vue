@@ -1,11 +1,14 @@
 <template>
   <div>
     <div class="personal">
-      <img src="../../static/头像.jpg" alt />
+      <!-- <img src="../../static/头像.jpg" alt /> -->
+      <!-- $axios.defaults.baseURL读取axios的服务器路径 -->
+      <img :src="$axios.defaults.baseURL + personal.head_img" alt="">
       <div class="personal-center">
         <div class="name">
           <span class="iconfont iconxingbienan"></span>
-          火星网友
+          <!-- 火星网友 -->
+          {{personal.nickname}}
         </div>
         <div class="time">2019-10-10</div>
       </div>
@@ -22,6 +25,12 @@
 //导入条形组件
 import CellBar from "@/components/CellBar"
 export default {
+    data(){
+        return{
+            //个人信息
+            personal:{}
+        }
+    },
     components:{
         CellBar
     },
@@ -35,7 +44,11 @@ export default {
                 Authorization:localStorage.getItem("token")
             }
         }).then(res=>{
-            console.log(res)
+            // console.log(res)
+            const {data} = res.data;
+
+            //保存到data
+            this.personal = data;
         })
     }
 };
