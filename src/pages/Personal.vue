@@ -3,7 +3,7 @@
     <div class="personal">
       <!-- <img src="../../static/头像.jpg" alt /> -->
       <!-- $axios.defaults.baseURL读取axios的服务器路径 -->
-      <img :src="$axios.defaults.baseURL + personal.head_img" alt />
+      <img :src="personal.head_img" alt />
       <div class="personal-center">
         <div class="name">
           <span class="iconfont iconxingbienan"></span>
@@ -54,6 +54,13 @@ export default {
 
       //保存到data
       this.personal = data;
+
+      //如果用户有头像
+      if(data.head_img){
+          this.personal.head_img = this.$axios.defaults.baseURL +personal.head_img; 
+      }else{
+          this.personal.head_img = "./static/头像.jpg"
+      }
     });
   }
 };
