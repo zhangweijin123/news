@@ -54,10 +54,11 @@ export default {
 
       //保存到data
       this.personal = data;
-
+    
       //如果用户有头像
       if(data.head_img){
-          this.personal.head_img = this.$axios.defaults.baseURL +personal.head_img; 
+          this.personal.head_img = this.$axios.defaults.baseURL +data.head_img;
+          console.log(this.data)
       }else{
           this.personal.head_img = "./static/头像.jpg"
       }
